@@ -17,5 +17,6 @@
 (require 'init-git)
 (require 'init-evil)
 (require 'init-coffee)
+(require 'init-ruby)
 (require 'init-rails)
 
