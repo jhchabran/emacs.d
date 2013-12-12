@@ -1,7 +1,8 @@
 (require-package 'rbenv)
 (require 'rbenv)
 
-(require-package 'yari)
+(require-package 'robe)
+(require-package 'inf-ruby)
 (require-package 'ruby-electric)
 
 ;; ruby-insert-end is missing, so let's re-add it
@@ -15,10 +16,12 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (require 'yari)
             (require 'ruby-electric)
             (require 'inf-ruby)
             (ruby-electric-mode t)
-            (inf-ruby-minor-mode +1)))
+            (push 'company-robe company-backends)
+            (company-mode)
+            (robe-mode)
+            ))
 
 (provide 'init-ruby)
