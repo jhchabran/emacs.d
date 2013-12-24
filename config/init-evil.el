@@ -39,8 +39,9 @@
 
 
 ;; Add tabs with gt and gT
-(require-package 'elscreen)
-(require 'elscreen)
+;; (require-package 'elscreen)
+;; (require 'elscreen)
+;; (elscreen-start)
 
 (define-key evil-normal-state-map (kbd "C-w t") 'elscreen-create)
 (define-key evil-normal-state-map (kbd "C-w x") 'elscreen-kill)
