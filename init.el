@@ -8,7 +8,6 @@
 (require 'init-packages)
 (require 'init-utils)
 (require 'init-core)
-(require 'init-eyecandy)
 (require 'init-ido)
 (require 'init-elisp)
 (require 'init-projects)
@@ -17,4 +16,5 @@
 (require 'init-coffee)
 (require 'init-ruby)
 (require 'init-rails)
+(require 'init-eyecandy)
 
