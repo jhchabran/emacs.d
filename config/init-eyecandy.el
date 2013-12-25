@@ -28,6 +28,7 @@
 (set-face-background 'vertical-border "black")
 (set-face-foreground 'vertical-border "black")
 
+
 ;; Well I don't remember what this one is
 (require-package 'pretty-mode)
 (setq pretty-default-groups '(:function))
@@ -35,10 +36,15 @@
 (global-pretty-mode)
 
 ;; Themes
-(require-package 'github-theme)
-(require-package 'solarized-theme)
-(require-package 'twilight-theme)
-
+(require-package 'color-theme-solarized)
 (load-theme 'solarized-dark t)
 
+;; Adjust colors (see list-colors-display)
+(custom-set-faces
+ '(font-lock-comment-delimiter-face ((t (:foreground "brightgreen"))))
+ '(font-lock-comment-face ((t (:foreground "brightgreen"))))
+ '(font-lock-keyword-face ((t (:foreground "brightred"))))
+ '(font-lock-type-face ((t (:foreground "yellow"))))
+ )
 (provide 'init-eyecandy)
+

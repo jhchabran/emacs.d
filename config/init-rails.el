@@ -22,7 +22,7 @@
             (rinari-launch)))
 
 (dolist (pattern '("\\.rb$" "Rakefile$" "\.rake$" "\.rxml$" "\.rjs$" ".irbrc$" "\.builder$" "\.ru$" "\.gemspec$" "Gemfile$"))
-  (add-to-list 'auto-mode-alist (cons pattern 'ruby-mode)))
+  (add-to-list 'auto-mode-alist (cons pattern 'enh-ruby-mode)))
 
 
 (evil-ex-define-cmd "Rfile"       'rinari-find-file-in-project)
