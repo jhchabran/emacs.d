@@ -13,7 +13,6 @@
 (require-package 'powerline)
 (require 'powerline)
 
-(load-library "projectile")
 ;; Basic powerline with Evil state and minus useless minor mode listing
 (defun jh/powerline-minimalist-theme ()
   (interactive)
