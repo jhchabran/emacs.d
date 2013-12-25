@@ -13,6 +13,7 @@
 (require-package 'powerline)
 (require 'powerline)
 
+(load-library "projectile")
 ;; Basic powerline with Evil state and minus useless minor mode listing
 (defun jh/powerline-minimalist-theme ()
   (interactive)
@@ -41,7 +42,9 @@
                                      ;;(powerline-narrow face1 'l)
                                      (powerline-raw " " face1)
                                      ;;(funcall separator-left face1 face2)
-                                     (powerline-vc face2 'r)))
+                                     (powerline-vc face1 'r)
+                                     (powerline-raw (format "[%s]" (projectile-project-name)) face1)
+                                     ))
                           (rhs (list (powerline-raw global-mode-string face2 'r)
                                      (funcall separator-right face2 face1)
                                      (when (boundp 'erc-modified-channels-object)
