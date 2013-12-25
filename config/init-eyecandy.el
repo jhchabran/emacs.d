@@ -12,7 +12,21 @@
 ;; Powerline, eye candy statusbar
 (require-package 'powerline)
 (require 'powerline)
-(powerline-center-theme)
+
+;; Use a less contrasted style
+(set-face-attribute 'mode-line nil
+                    :foreground "cyan"
+                    :background "black"
+                    :inverse-video nil
+                    :box nil)
+(set-face-attribute 'mode-line-inactive nil
+                    :inverse-video nil
+                    :box nil)
+(powerline-center-evil-theme)
+
+;; Get rid of the ugly vertical separator
+(set-face-background 'vertical-border "black")
+(set-face-foreground 'vertical-border "black")
 
 ;; Well I don't remember what this one is
 (require-package 'pretty-mode)
@@ -25,9 +39,6 @@
 (require-package 'solarized-theme)
 (require-package 'twilight-theme)
 
-(load-theme 'twilight t)
-
-;; Font
-(set-default-font "Inconsolata 12")
+(load-theme 'solarized-dark t)
 
 (provide 'init-eyecandy)
