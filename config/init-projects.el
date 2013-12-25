@@ -1,6 +1,9 @@
 (require-package 'projectile)
+(require-package 'grizzl)
+(require 'grizzl)
 (require 'projectile)
 
+(setq projectile-completion-system 'grizzl)
 (setq projectile-indexing-method 'native)
 (setq projectile-enable-caching t)
 (projectile-global-mode)
