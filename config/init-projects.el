@@ -1,5 +1,7 @@
 (require-package 'projectile)
 (require-package 'grizzl)
+(require-package 'ag)
+
 (require 'grizzl)
 (require 'projectile)
 
@@ -8,10 +10,10 @@
 (setq projectile-enable-caching t)
 (projectile-global-mode)
 
-(require-package 'company)
-(require 'company)
-
-;; Doesn't seem to work well
-(add-hook 'projectile-switch-project-hook 'company-mode)
+(require-package 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
+(setq ac-ignore-case nil)
+(add-to-list 'ac-modes 'enh-ruby-mode)
 
 (provide 'init-projects)

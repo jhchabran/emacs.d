@@ -34,7 +34,7 @@
 
 ;; Map common file finder
 (evil-leader/set-key "f" 'projectile-find-file
-                     "g" 'projectile-grep
+                     "g" 'projectile-ag
                      "e" 'find-file)
 
 
