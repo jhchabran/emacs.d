@@ -37,4 +37,8 @@
 (evil-ex-define-cmd "Rsass"       'rinari-find-sass)
 (evil-ex-define-cmd "Rjavascript" 'rinari-find-javascript)
 
+(custom-set-faces
+ '(erb-out-face ((t (:background "black"))))
+ '(erb-exec-face ((t (:background "black")))))
+
 (provide 'init-rails)
