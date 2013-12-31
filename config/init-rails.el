@@ -1,6 +1,7 @@
 (require-package 'rinari)
 (require-package 'rhtml-mode)
 (require-package 'haml-mode)
+(require-package 'scss-mode)
 
 (require 'rinari)
 
@@ -20,6 +21,10 @@
 (add-hook 'coffee-mode-hook
           (lambda ()
             (rinari-launch)))
+
+(require 'scss-mode)
+;; Disable auto compilation
+(setq scss-compile-at-save nil)
 
 (dolist (pattern '("\\.rb$" "Rakefile$" "\.rake$" "\.rxml$" "\.rjs$" ".irbrc$" "\.builder$" "\.ru$" "\.gemspec$" "Gemfile$"))
   (add-to-list 'auto-mode-alist (cons pattern 'enh-ruby-mode)))
