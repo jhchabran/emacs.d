@@ -17,7 +17,7 @@
 (require-package 'evil-indent-textobject)
 (require-package 'evil-matchit)
 (require-package 'surround)
-;;(require-package 'expand-region)
+(require-package 'expand-region)
 
 (require 'evil)
 (require 'evil-leader)
@@ -26,7 +26,7 @@
 (require 'evil-visualstar)
 (require 'evil-matchit)
 (require 'surround)
-;;(require 'expand-region)
+(require 'expand-region)
 
 (global-evil-leader-mode)
 (evil-mode t)
