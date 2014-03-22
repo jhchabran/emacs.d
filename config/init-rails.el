@@ -2,6 +2,7 @@
 (require-package 'rhtml-mode)
 (require-package 'haml-mode)
 (require-package 'scss-mode)
+(require-package 'less-css-mode)
 
 (require 'rinari)
 
