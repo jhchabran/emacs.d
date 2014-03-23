@@ -17,6 +17,7 @@
 (require-package 'evil-indent-textobject)
 (require-package 'evil-matchit)
 (require-package 'surround)
+(require-package 'expand-region)
 
 (require 'evil)
 (require 'evil-leader)
@@ -25,29 +26,31 @@
 (require 'evil-visualstar)
 (require 'evil-matchit)
 (require 'surround)
+(require 'expand-region)
 
 (global-evil-leader-mode)
 (evil-mode t)
 (global-surround-mode 1)
 
-(evil-leader/set-leader ",")
+(evil-leader/set-leader "<SPC>")
 
-;; Map common file finder
 (evil-leader/set-key "f" 'projectile-find-file
-                     "g" 'projectile-ag
-                     "e" 'find-file)
+                     "F" 'projectile-ag
+                     "e" 'find-file
+                     "w" 'evil-write
+                     "<SPC>" 'evil-visual-line
+                     "v" 'er/expand-region
+                     "," 'evil-emacs-state
+                     "q" 'ido-kill-buffer
+                     "gs" 'magit-status
+                     "gw" 'magit-commit
+                     "t" 'visit-ansi-term)
 
+;; (define-key evil-normal-state-map (kbd "C-w t") 'elscreen-create)
+;; (define-key evil-normal-state-map (kbd "C-w x") 'elscreen-kill)
 
-;; Add tabs with gt and gT
-;; (require-package 'elscreen)
-;; (require 'elscreen)
-;; (elscreen-start)
-
-(define-key evil-normal-state-map (kbd "C-w t") 'elscreen-create)
-(define-key evil-normal-state-map (kbd "C-w x") 'elscreen-kill)
-
-(define-key evil-normal-state-map "gT" 'elscreen-previous)
-(define-key evil-normal-state-map "gt" 'elscreen-next)
+;; (define-key evil-normal-state-map "gT" 'elscreen-previous)
+;; (define-key evil-normal-state-map "gt" 'elscreen-next)
 
 ;; Magit
 (evil-add-hjkl-bindings magit-branch-manager-mode-map 'emacs
@@ -57,5 +60,34 @@
   "K" 'magit-discard-item
   "l" 'magit-key-mode-popup-logging
   "h" 'magit-toggle-diff-refine-hunk)
+
+(require 'term)
+(defun visit-ansi-term ()
+    "If the current buffer is:
+     1) a running ansi-term named *ansi-term*, rename it.
+     2) a stopped ansi-term, kill it and create a new one.
+     3) a non ansi-term, go to an already running ansi-term
+        or start a new one while killing a defunt one"
+    (interactive)
+    (let ((is-term (string= "term-mode" major-mode))
+          (is-running (term-check-proc (buffer-name)))
+          (term-cmd "/bin/bash")
+          (anon-term (get-buffer "*ansi-term*")))
+      (if is-term
+          (if is-running
+              (if (string= "*ansi-term*" (buffer-name))
+                  (call-interactively 'rename-buffer)
+                (if anon-term
+                    (switch-to-buffer "*ansi-term*")
+                  (ansi-term term-cmd)))
+            (kill-buffer (buffer-name))
+            (ansi-term term-cmd))
+        (if anon-term
+            (if (term-check-proc "*ansi-term*")
+                (switch-to-buffer "*ansi-term*")
+              (kill-buffer "*ansi-term*")
+              (ansi-term term-cmd))
+          (ansi-term term-cmd)))))
+(global-set-key (kbd "<f2>") 'visit-ansi-term)
 
 (provide 'init-evil)
