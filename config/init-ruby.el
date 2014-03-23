@@ -19,14 +19,14 @@
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 
 ;; Customize colors for Ruby code
-(custom-set-faces
- '(enh-ruby-string-delimiter-face ((t (:foreground "red"))))
- '(enh-ruby-op-face ((t (:foreground "red"))))
- '(enh-ruby-regexp-delimiter-face ((t (:foreground "red"))))
- '(erm-syn-warnline ((t (:underline t))))
- '(erm-syn-errline ((t (:background "red" :foreground "white"))))
- '(font-lock-constant-face ((t (:foreground "violet"))))
- )
+;; (custom-set-faces
+;;  '(enh-ruby-string-delimiter-face ((t (:foreground "red"))))
+;;  '(enh-ruby-op-face ((t (:foreground "red"))))
+;;  '(enh-ruby-regexp-delimiter-face ((t (:foreground "red"))))
+;;  '(erm-syn-warnline ((t (:underline t))))
+;;  '(erm-syn-errline ((t (:background "red" :foreground "white"))))
+;;  '(font-lock-constant-face ((t (:foreground "violet"))))
+;;  )
 
 ;; include and extend aren't keywords but I do like having them
 ;; highlighted as such.

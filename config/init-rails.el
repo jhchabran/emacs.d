@@ -1,6 +1,7 @@
 (require-package 'rinari)
 (require-package 'rhtml-mode)
 (require-package 'haml-mode)
+(require-package 'less-css-mode)
 (require-package 'scss-mode)
 
 (require 'rinari)
@@ -18,6 +19,12 @@
           (lambda ()
             (set (make-local-variable 'tab-width) 2)
             (rinari-launch)))
+(require 'less-css-mode)
+(add-hook 'less-css-mode-hook
+          (lambda () (rinari-launch)))
+
+(require 'coffee-mode)
+(custom-set-variables '(coffee-tab-width 2))
 (add-hook 'coffee-mode-hook
           (lambda ()
             (rinari-launch)))
@@ -42,8 +49,8 @@
 (evil-ex-define-cmd "Rsass"       'rinari-find-sass)
 (evil-ex-define-cmd "Rjavascript" 'rinari-find-javascript)
 
-(custom-set-faces
- '(erb-out-face ((t (:background "black"))))
- '(erb-exec-face ((t (:background "black")))))
+;; (custom-set-faces
+;;  '(erb-out-face ((t (:background "black"))))
+;;  '(erb-exec-face ((t (:background "black")))))
 
 (provide 'init-rails)

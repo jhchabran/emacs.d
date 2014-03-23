@@ -3,6 +3,16 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (menu-bar-mode -1)
 
+(defun toggle-fullscreen ()
+  "Toggle full screen on X11"
+  (interactive)
+  (when (eq window-system 'x)
+    (set-frame-parameter
+     nil 'fullscreen
+     (when (not (frame-parameter nil 'fullscreen)) 'fullboth))))
+
+(global-set-key [f11] 'toggle-fullscreen)
+
 ;; No blinking cursor
 (blink-cursor-mode 0)
 
@@ -12,6 +22,7 @@
 ;; Powerline, eye candy statusbar
 (require-package 'powerline)
 (require 'powerline)
+
 
 ;; Basic powerline with Evil state and minus useless minor mode listing
 (defun jh/powerline-minimalist-theme ()
@@ -72,7 +83,8 @@
                     :foreground "black"
                     :background "black"
                     :box nil)
-(jh/powerline-minimalist-theme)
+;;(jh/powerline-minimalist-theme)
+(powerline-center-evil-theme)
 
 ;; Get rid of the ugly vertical separator
 (set-face-background 'vertical-border "black")
@@ -87,14 +99,16 @@
 
 ;; Themes
 (require-package 'color-theme-solarized)
-(load-theme 'solarized-dark t)
+(require-package 'sublime-themes)
+
+(load-theme 'odersky t)
 
 ;; Adjust colors (see list-colors-display)
-(custom-set-faces
- '(font-lock-comment-delimiter-face ((t (:foreground "brightgreen"))))
- '(font-lock-comment-face ((t (:foreground "brightgreen"))))
- '(font-lock-keyword-face ((t (:foreground "brightred"))))
- '(font-lock-type-face ((t (:foreground "yellow"))))
- )
+;; (custom-set-faces
+;;  '(font-lock-comment-delimiter-face ((t (:foreground "brightgreen"))))
+;;  '(font-lock-comment-face ((t (:foreground "brightgreen"))))
+;;  '(font-lock-keyword-face ((t (:foreground "brightred"))))
+;;  '(font-lock-type-face ((t (:foreground "yellow"))))
+;;  )
 (provide 'init-eyecandy)
 
