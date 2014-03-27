@@ -47,12 +47,8 @@
                      "t" 'visit-ansi-term
                      "l" 'next-buffer
                      "h" 'next-buffer
-                     "k" 'switch-to-previous-buffer
+                     "k" 'evil-buffer
                      "j" 'ido-switch-buffer)
-
-(defun switch-to-previous-buffer ()
-  (interactive)
-  (switch-to-buffer (other-buffer (current-buffer) 1)))
 
 ;; (define-key evil-normal-state-map (kbd "C-w t") 'elscreen-create)
 ;; (define-key evil-normal-state-map (kbd "C-w x") 'elscreen-kill)
